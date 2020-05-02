@@ -1,14 +1,14 @@
 # Scrabble Junior & Board Builder
 
-# Board Builder (Tiago)
+## Board Builder (Tiago)
 
-## Important Assumptions
+### Important Assumptions
 - Minimum size of the board? 5x5
 - Amount of words on the board? user chooses (per turn after minimum of 5 words)
 - How to check a position for a word is valid? From position, check iteratively each square, if occupied check is the same char.
 - How to render the Board / positions every time? 2D vector with a loop.
 
-## Requisites / User Flow
+### Requisites / User Flow
 - Ask and save Board.name (Extra: test that it saves well, proving valid file_name)
 - Ask and save Board.size (from 5x5 to 20x20, accept any size between)
 - Word building process:
@@ -22,30 +22,30 @@
     - IF i > 5, Ask if they want to finish the Board (if "Y", break)
 - Create & save board file (respecting format)
 
-## Objects
+### Objects
 
 Helper:
 - number_coordinate(letter)
 
 Classes:
   - Board (Required):
-    .size array [nr_lines, nr_collumn]
-    .name string
-    .tiles vector [line][collumn]
-    .words vector Word
+    - .size array [nr_lines, nr_collumn]
+    - .name string
+    - .tiles vector [line][collumn]
+    - .words vector Word
     
   - Word:
-    .position char[2]
-    .orientation (ENUM :horizontal, :vertical)
-    .word string
+    - .position char[2]
+    - .orientation (ENUM :horizontal, :vertical)
+    - .word string
 
-# Scrabble Junior (Valter)
+## Scrabble Junior (Valter)
 
-## Important Assumptions
+### Important Assumptions
 Who plays first? We will always assume it's Player 1, since it has no impact and was not required.
 How to render all players tiles? Around the board, left-to-right & top-to-bottom.
 
-## Requisites / User Flow
+### Requisites / User Flow
 - The code must be structured in order to separate the definition of each class and the implementation of its methods, in files with the extension .hpp (or .h) and .cpp, respectively.
 
 - Game Setup:
@@ -79,7 +79,7 @@ How to render all players tiles? Around the board, left-to-right & top-to-bottom
 
 - Calculate & Announce the winner
 
-## Objects
+### Objects
 
 Classes:
 - Game
@@ -90,13 +90,13 @@ Classes:
   - .ended bool
 
 - Board
-  .tiles vector [line][collumn] Tile
+  - .tiles vector [line][collumn] Tile
 
 - Player
-  .id unsigned_small
-  .score unsigned_small
-  .hand vector char
+  - .id unsigned_small
+  - .score unsigned_small
+  - .hand vector char
 
 - Tile
-  .letter char /a-Z/
-  .played bool
+  - .letter char /a-Z/
+  - .played bool
