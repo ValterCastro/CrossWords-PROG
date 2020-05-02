@@ -11,15 +11,15 @@
 
 class Player{
 public:
-    Player(unsigned int id, unsigned int score = 0, std::vector<char> hand);
+    Player(unsigned int id, std::vector<char> hand,  unsigned int score = 0);
 
-    void getID() const;
-    void getScore() const;
-    void getHand() const;
+    unsigned int getID() const;
+    unsigned int getScore() const;
+    std::vector<char> getHand() const;
 
-    unsigned int setID(unsigned int id);
-    unsigned int setScore(unsigned int score);
-    std::vector<char> setHand(std::vector<char> hand);
+    void setID(unsigned int id);
+    void setScore(unsigned int score);
+    void setHand(std::vector<char> hand);
 
 private:
     unsigned int id;
