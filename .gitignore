@@ -1,3 +1,5 @@
-.vs
-BoardBuilder/Debug
-*.vcxproj*
+.vscode
+*.obj
+*.pdb
+*.exe
+*.ilk
