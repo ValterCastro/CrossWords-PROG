@@ -1,19 +1,20 @@
 #include <iostream>
-#include "Classes/Board.h"
-#include "Classes/Word.h"
-#include "Libraries/Requester.h"
+#include "Classes/Board.cpp"
+#include "Classes/Word.cpp"
+#include "Libraries/Requester.cpp"
 
 using namespace std;
 
 int main()
 {   
     // initiate vars
-    // Board board = Board();
-    // string boardName;
+    Board board;
+    string boardName;
 
-    // boardName = Requester::requestBoardName();
-    //board.setName(boardName);
+    boardName = Requester::requestBoardName();
+    board.setName(boardName);
 
-    cout << "Hello World!\n";
-    // cout << board.getName();
+
+    cout << "Program Finished Successfully\n";
+    getline(cin, boardName);
 }

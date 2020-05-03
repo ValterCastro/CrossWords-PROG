@@ -7,34 +7,34 @@
 Board::Board() {}
 
 std::vector<unsigned short> Board::getSize() {
-	return size;
+	return this->size;
 }
 
 std::string Board::getName() {
-	return name;
+	return this->name;
 }
 
-std::vector<std::vector> Board::getTiles() {
-	return tiles;
+std::vector<std::vector<char>> Board::getTiles() {
+	return this->tiles;
 }
 
 std::vector<Word> Board::getWords() {
-	return words;
+	return this->words;
 }
 
-Board::setSize(unsigned short nr_rows, unsigned short nr_collumns) {
+void Board::setSize(unsigned short nr_rows, unsigned short nr_collumns) {
 	this->size[0] = nr_rows;
 	this->size[1] = nr_collumns;
 }
 
-Board::setName(std::string name) {
+void Board::setName(std::string name) {
 	this->name = name;
 }
 
-Board::setTile(unsigned short row, unsigned short collumn, char letter) {
+void Board::setTile(unsigned short row, unsigned short collumn, char letter) {
 	this->tiles.at(row).at(collumn) = letter;
 }
 
-Board::addWord(Word word) {
+void Board::addWord(Word word) {
 	this->words.push_back(word);
 }
