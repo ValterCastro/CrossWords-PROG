@@ -23,8 +23,11 @@ std::vector<Word> Board::getWords() {
 }
 
 void Board::setSize(unsigned short nr_rows, unsigned short nr_collumns) {
-	this->size[0] = nr_rows;
-	this->size[1] = nr_collumns;
+	std::vector<unsigned short> size;
+	size.push_back(nr_rows);
+	size.push_back(nr_collumns);
+
+	this->size = size;
 }
 
 void Board::setName(std::string name) {

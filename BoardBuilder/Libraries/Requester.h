@@ -9,9 +9,7 @@ public:
 	Requester();
 	
 	std::string static requestBoardName();
-
-private:
-
+	std::vector<unsigned short> static requestBoardSize();
 };
 
 #endif

@@ -9,8 +9,8 @@
 - How to render the Board / positions every time? 2D vector with a loop.
 
 ### Requisites / User Flow
-- Ask and save Board.name (Extra: test that it saves well, proving valid file_name)
-- Ask and save Board.size (from 5x5 to 20x20, accept any size between)
+- Ask and save Board.name (Extra: test that it saves well, proving valid file_name) (DONE, but not validation)
+- Ask and save Board.size (from 5x5 to 20x20, accept any size between) (DONE, but not validation)
 - Word building process:
   - Load WORDS.TXT and save to set "words"
   - Iteration until break
