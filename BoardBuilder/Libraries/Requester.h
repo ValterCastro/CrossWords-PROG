@@ -10,6 +10,10 @@ public:
 	
 	std::string static requestBoardName();
 	std::vector<unsigned short> static requestBoardSize();
+	bool static requestIsBoardFinished();
+private:
+	bool static getValidYesOrNo(std::string question);
+	int static getValidInt(std::string question, int min, int max);
 };
 
 #endif
