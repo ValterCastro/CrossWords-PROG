@@ -1,16 +1,18 @@
 #include "Requester.h"
+#include "FileWrapper.h"
 
 #include <iostream>
+#include <fstream>
 #include <string>
 
 Requester::Requester() {}
 
 std::string Requester::requestBoardName() {
 	std::string boardName;
-	
-	// TODO: validate input can be a filename
-	std::cout << "How would you like to call this board?\n";
-	getline(std::cin, boardName);
+	std::string question;
+
+	question = "How would you like to call this board?";
+	boardName = Requester::getValidFilename(question);
 	std::cout << '\n';
 
 	return boardName;
@@ -46,25 +48,28 @@ bool Requester::requestIsBoardFinished() {
 
 // Private
 
-bool Requester::getValidYesOrNo(std::string question) {
+std::string Requester::getValidFilename(std::string question) {
 	bool valid_input = false;
 	std::string answer;
+	std::string filename;
 	
 	do
 	{
 		std::cout << question << '\n'; 
 		getline(std::cin, answer);
-		if (answer == "Y" || answer == "Yes" || answer == "yes" || answer == "N" || answer == "No" || answer == "no")
+		
+		filename = answer + ".txt";
+		
+		if (FileWrapper::isValidFilename(filename)) {
 			valid_input = true;
+		}
 		else
 		{
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			std::cout << "Invalid input, please write Y/Yes or N/No.\n\n";
+			std::cout << "Invalid input, please write a valid filename.\n\n";
 		}
 	} while (!valid_input);
 
-	return (answer == "Y" || answer == "Yes" || answer == "yes");
+	return filename;
 }
 
 int Requester::getValidInt(std::string question, int min, int max) {
@@ -86,4 +91,25 @@ int Requester::getValidInt(std::string question, int min, int max) {
 	} while (!valid_input);
 
 	return answer;
+}
+
+bool Requester::getValidYesOrNo(std::string question) {
+	bool valid_input = false;
+	std::string answer;
+	
+	do
+	{
+		std::cout << question << '\n'; 
+		getline(std::cin, answer);
+		if (answer == "Y" || answer == "Yes" || answer == "yes" || answer == "N" || answer == "No" || answer == "no")
+			valid_input = true;
+		else
+		{
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
+			std::cout << "Invalid input, please write Y/Yes or N/No.\n\n";
+		}
+	} while (!valid_input);
+
+	return (answer == "Y" || answer == "Yes" || answer == "yes");
 }
