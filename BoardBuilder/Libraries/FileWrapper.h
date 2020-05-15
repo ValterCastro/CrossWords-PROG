@@ -11,7 +11,7 @@ public:
 
     std::set<std::string> static loadWordsFile();
     bool static isValidFilename(std::string filename);
-    bool static saveBoardToFile(std::string filename,  std::string word);
+    bool static saveBoardToFile(std::string boardName,  std::string word);
 };
 
 #endif

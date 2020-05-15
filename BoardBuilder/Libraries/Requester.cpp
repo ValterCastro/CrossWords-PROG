@@ -1,9 +1,11 @@
 #include "Requester.h"
-#include "FileWrapper.h"
 
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <set>
+
+#include "FileWrapper.h"
 
 Requester::Requester() {}
 
@@ -37,6 +39,17 @@ std::vector<unsigned short> Requester::requestBoardSize() {
 	return sizes;
 }
 
+std::string Requester::requestWord(std::set<std::string> acceptableWords){
+	std::string question;
+	std::string word;
+
+	question = "Which word you would like to add?";
+	word = Requester::getValidWord(question, acceptableWords);
+	std::cout << '\n';
+	
+	return word;
+}
+
 bool Requester::requestIsBoardFinished() {
 	bool boardFinished;
 	
@@ -51,16 +64,12 @@ bool Requester::requestIsBoardFinished() {
 std::string Requester::getValidFilename(std::string question) {
 	bool valid_input = false;
 	std::string answer;
-	std::string filename;
 	
 	do
 	{
 		std::cout << question << '\n'; 
 		getline(std::cin, answer);
-		
-		filename = answer + ".txt";
-		
-		if (FileWrapper::isValidFilename(filename)) {
+		if (FileWrapper::isValidFilename(answer + ".txt")) {
 			valid_input = true;
 		}
 		else
@@ -69,7 +78,7 @@ std::string Requester::getValidFilename(std::string question) {
 		}
 	} while (!valid_input);
 
-	return filename;
+	return answer;
 }
 
 int Requester::getValidInt(std::string question, int min, int max) {
@@ -80,8 +89,10 @@ int Requester::getValidInt(std::string question, int min, int max) {
 	{
 		std::cout << question << '\n'; 
 		std::cin >> answer;
-		if (!std::cin.fail() && answer >= min && answer <= max)
+		if (!std::cin.fail() && answer >= min && answer <= max){
 			valid_input = true;
+			std::cin.ignore(1000, '\n');
+		}
 		else
 		{
 			std::cin.clear();
@@ -105,11 +116,28 @@ bool Requester::getValidYesOrNo(std::string question) {
 			valid_input = true;
 		else
 		{
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
 			std::cout << "Invalid input, please write Y/Yes or N/No.\n\n";
 		}
 	} while (!valid_input);
 
 	return (answer == "Y" || answer == "Yes" || answer == "yes");
+}
+
+std::string Requester::getValidWord(std::string question, std::set<std::string> acceptableWords) {
+	bool valid_input = false;
+	std::string answer;
+
+	do
+	{
+		std::cout << question << '\n'; 
+		getline(std::cin, answer);
+		if (acceptableWords.find(answer) != acceptableWords.end())
+			valid_input = true;
+		else
+		{
+			std::cout << "Word not found in WORDS.TXT, please write a word from that file.\n\n";
+		}
+	} while (!valid_input);
+
+	return answer;
 }
