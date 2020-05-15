@@ -6,12 +6,18 @@
 
 Board::Board() {}
 
-std::vector<unsigned short> Board::getSize() {
-	return this->size;
-}
+// getters
 
 std::string Board::getName() {
 	return this->name;
+}
+
+unsigned short Board::getNrRows() {
+	return this->tiles.size();
+}
+
+unsigned short Board::getNrCollumns() {
+	return this->tiles[0].size();
 }
 
 std::vector<std::vector<char>> Board::getTiles() {
@@ -22,12 +28,19 @@ std::vector<Word> Board::getWords() {
 	return this->words;
 }
 
-void Board::setSize(unsigned short nr_rows, unsigned short nr_collumns) {
-	std::vector<unsigned short> size;
-	size.push_back(nr_rows);
-	size.push_back(nr_collumns);
+// setters
 
-	this->size = size;
+void Board::setNrRows(unsigned short nrRows) {
+	this->tiles.resize(nrRows);
+}
+
+void Board::setNrCollumns(unsigned short nrCollumns) {
+	unsigned short nrRows;
+
+	nrRows = this->getNrRows();
+	for(size_t i = 0; i < nrRows; i++){
+		this->tiles[i].resize(nrCollumns);
+	}
 }
 
 void Board::setName(std::string name) {

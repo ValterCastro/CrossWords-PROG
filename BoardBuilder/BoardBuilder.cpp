@@ -6,16 +6,17 @@
 #include "Classes/Word.cpp"
 #include "Libraries/Requester.cpp"
 #include "Libraries/FileWrapper.cpp"
+#include "Libraries/Presenter.cpp"
 
 using namespace std;
 
 int main()
-{   
+{
     // initiate vars
     Board board;
     string boardName;
     bool boardFinished;
-    set<string> words;
+    set<string> acceptableWords;
 
     vector<unsigned short> boardSize;
 
@@ -23,24 +24,28 @@ int main()
     board.setName(boardName);
 
     boardSize = Requester::requestBoardSize();
-    board.setSize(boardSize[0], boardSize[1]);
-    
-    words = FileWrapper::loadWordsFile();
-    
-    while(true){
-        // Render Board
-        // Ask for a word && check word exists in words
+    board.setNrRows(boardSize[0]);
+    board.setNrCollumns(boardSize[1]);
+
+    acceptableWords = FileWrapper::loadWordsFile();
+
+    while (true)
+    {
+        Presenter::presentBoard(board);
+
+        Requester::requestWord(acceptableWords);
+
         // Ask position and Horz/Vert (allow to restart iteration on "R") && check position is valid
         // Update Board.board with new letters
         // Save word in Board.words
-        // IF i > 5, Ask if they want to finish the Board (if "Y", break)    
-        
+        // IF i > 5, Ask if they want to finish the Board (if "Y", break)
+
         boardFinished = Requester::requestIsBoardFinished();
-        if(boardFinished){
+        if (boardFinished)
+        {
             break;
         }
     }
-
 
     // Save Board to File
     string word = "aah";

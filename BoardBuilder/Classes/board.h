@@ -10,19 +10,20 @@ public:
 	Board();
 
 	// getters
-	std::vector<unsigned short> getSize();
 	std::string getName();
+	unsigned short getNrRows();
+	unsigned short getNrCollumns();
 	std::vector<std::vector<char>> getTiles();
 	std::vector<Word> getWords();
 
 	// setters
-	void setSize(unsigned short nr_rows, unsigned short nr_collumns);
 	void setName(std::string name);
+	void setNrRows(unsigned short nrRows);
+	void setNrCollumns(unsigned short nrCollumns);
 	void setTile(unsigned short row, unsigned short collumn, char letter);
 	void addWord(Word word);
 
 private:
-	std::vector<unsigned short> size;
 	std::string name;
 	std::vector<std::vector<char>> tiles;
 	std::vector <Word> words;

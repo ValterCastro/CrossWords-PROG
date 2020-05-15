@@ -45,10 +45,10 @@ bool FileWrapper::isValidFilename(std::string filename){
     return validFilename;
 }
 
-bool FileWrapper::saveBoardToFile(std::string filename, std::string word){
+bool FileWrapper::saveBoardToFile(std::string boardName, std::string word){
     std::ofstream boardFile;
     
-    boardFile.open(filename + ".txt");
+    boardFile.open(boardName + ".txt");
     boardFile << word << '\n';
     boardFile.close();
 
