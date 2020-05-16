@@ -12,8 +12,6 @@ class Presenter {
 public:
     Presenter();
     const char static SEPARATOR;
-    const char static INITIAL_ROW_LETTER;
-    const char static INITIAL_COLLUMN_LETTER;
     
     void static presentBoard(Board board);
 private:

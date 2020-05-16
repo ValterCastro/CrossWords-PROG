@@ -9,8 +9,6 @@
 Presenter::Presenter() {};
 
 const char Presenter::SEPARATOR = ' ';
-const char Presenter::INITIAL_ROW_LETTER = 'A';
-const char Presenter::INITIAL_COLLUMN_LETTER = 'a';
 
 void Presenter::presentBoard(Board board){
     unsigned short nrRows;
@@ -26,7 +24,7 @@ void Presenter::presentBoard(Board board){
 
     std::cout << navString << '\n';
     for(size_t i = 0; i < nrRows; i++){
-        rowString = Presenter::rowString(nrCollumns, Presenter::INITIAL_ROW_LETTER + i, boardTiles[i]);
+        rowString = Presenter::rowString(nrCollumns, Board::INITIAL_ROW_LETTER + i, boardTiles[i]);
         std::cout << rowString << '\n';
     }
     std::cout << '\n';
@@ -40,7 +38,7 @@ std::string Presenter::navString(unsigned short nrCollumns){
  
     collumnsNav.push_back(Presenter::SEPARATOR);
     for(size_t i = 0; i < nrCollumns; i++){
-        letter = Presenter::INITIAL_COLLUMN_LETTER + i;
+        letter = Board::INITIAL_COLLUMN_LETTER + i;
         collumnsNav.push_back(letter);
         collumnsNav.push_back(Presenter::SEPARATOR);
     }
