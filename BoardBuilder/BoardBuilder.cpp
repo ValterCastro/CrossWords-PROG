@@ -1,22 +1,52 @@
-// BoardBuilder.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
-#include "Classes/Board.h"
-#include "Classes/Word.h"
+#include <string>
+#include <set>
+
+#include "Classes/Board.cpp"
+#include "Classes/Word.cpp"
+#include "Libraries/Requester.cpp"
+#include "Libraries/FileWrapper.cpp"
+#include "Libraries/Presenter.cpp"
+
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    const unsigned short MIN_WORDS = 5;
+
+    Board board;
+    string boardName;
+    vector<unsigned short> boardSize;
+    set<string> acceptableWords;
+    bool boardFinished;
+
+    boardName = Requester::requestBoardName();
+    board.setName(boardName);
+
+    boardSize = Requester::requestBoardSize();
+    board.setNrRows(boardSize[0]);
+    board.setNrCollumns(boardSize[1]);
+
+    acceptableWords = FileWrapper::loadWordsFile();
+
+    while (true)
+    {
+        Presenter::presentBoard(board);
+
+        while(true){
+            Word word = Requester::requestWord(acceptableWords, board.getNrRows(), board.getNrCollumns());
+            if(board.addWord(word))
+                break;
+            else
+                cout << "Invalid word size or position, please try again.\n\n";             
+        }
+
+        if(board.getWords().size() >= MIN_WORDS && Requester::requestIsBoardFinished())
+            break;
+    }
+
+    FileWrapper::saveBoardToFile(board);
+    cout << "Board saved successfully with name " << board.getName() << ".txt" << '\n';
+
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

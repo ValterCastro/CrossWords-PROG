@@ -6,21 +6,21 @@
 - Minimum size of the board? 5x5
 - Amount of words on the board? user chooses (per turn after minimum of 5 words)
 - How to check a position for a word is valid? From position, check iteratively each square, if occupied check is the same char.
-- How to render the Board / positions every time? 2D vector with a loop.
+- How to render the Board / positions every time? 2D vector with a for loop.
 
 ### Requisites / User Flow
-- Ask and save Board.name (Extra: test that it saves well, proving valid file_name)
-- Ask and save Board.size (from 5x5 to 20x20, accept any size between)
+- Ask and save Board.name (Extra: test that it saves well, proving valid file_name) (DONE)
+- Ask and save Board.nrRows and Board.nrCollumns (from 5x5 to 20x20, accept any size between) (DONE)
 - Word building process:
-  - Load WORDS.TXT and save to set "words"
+  - Load WORDS.TXT and save to set "words" (DONE)
   - Iteration until break
-    - Render Board
-    - Ask for a word && check word exists in words
-    - Ask position and Horz/Vert (allow to restart iteration on "R") && check position is valid
-    - Update Board.board with new letters
-    - Save word in Board.words 
-    - IF i > 5, Ask if they want to finish the Board (if "Y", break)
-- Create & save board file (respecting format)
+    - Render Board (DONE)
+    - Ask for a word && check word exists in words (DONE)
+    - Ask position and Horz/Vert (allow to restart iteration on "R") && check position is valid (DONE)
+    - Update Board.board with new letters (DONE)
+    - Save word in Board.words (DONE)
+    - IF i > 5, Ask if they want to finish the Board (if "Y", break) (DONE)
+- Create & save board file (respecting format) (DONE)
 
 ### Objects
 
@@ -29,8 +29,9 @@ Helper:
 
 Classes:
   - Board (Required):
-    - .size array [nr_lines, nr_collumn]
     - .name string
+    - .nrRows unsigned short
+    - .nrCollumns unsigned short
     - .tiles vector [line][collumn]
     - .words vector Word
     
