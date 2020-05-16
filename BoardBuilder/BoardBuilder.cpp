@@ -17,7 +17,7 @@ int main()
     string boardName;
     bool boardFinished;
     set<string> acceptableWords;
-
+    
     vector<unsigned short> boardSize;
 
     boardName = Requester::requestBoardName();
@@ -33,17 +33,20 @@ int main()
     {
         Presenter::presentBoard(board);
 
-        Requester::requestWord(acceptableWords);
+        while(true){
+            Word word = Requester::requestWord(acceptableWords, board.getNrRows(), board.getNrCollumns());
+            if(board.addWord(word))
+                break;
+            else
+                cout << "Invalid word size or position, please try again.\n\n";             
+        }
 
-        // Ask position and Horz/Vert (allow to restart iteration on "R") && check position is valid
-        // Update Board.board with new letters
-        // Save word in Board.words
-        // IF i > 5, Ask if they want to finish the Board (if "Y", break)
-
-        boardFinished = Requester::requestIsBoardFinished();
-        if (boardFinished)
-        {
-            break;
+        if(board.getWords().size() >= 5){
+            boardFinished = Requester::requestIsBoardFinished();
+            if (boardFinished)
+            {
+                break;
+            }
         }
     }
 
