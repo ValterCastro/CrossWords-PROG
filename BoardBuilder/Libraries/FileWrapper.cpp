@@ -5,6 +5,8 @@
 #include <string>
 #include <set>
 
+#include "Classes/Board.h"
+
 FileWrapper::FileWrapper() {}
 
 std::set<std::string> FileWrapper::loadWordsFile() {
@@ -45,12 +47,26 @@ bool FileWrapper::isValidFilename(std::string filename){
     return validFilename;
 }
 
-bool FileWrapper::saveBoardToFile(std::string boardName, std::string word){
+void FileWrapper::saveBoardToFile(Board board){
     std::ofstream boardFile;
-    
-    boardFile.open(boardName + ".txt");
-    boardFile << word << '\n';
-    boardFile.close();
+    std::vector<Word> words;
+    char orientationChar;
 
-    return true;
+    boardFile.open(board.getName() + ".txt");
+    
+    boardFile << board.getNrRows() << " x " << board.getNrCollumns() << '\n';
+
+    words = board.getWords();
+    for(size_t i = 0; i < words.size(); i++){
+        Word word = words[i];
+        orientationChar = word.getOrientation() == WordOrientation::Horizontal ? 'H' : 'V';
+
+        boardFile << word.getPosition()[0] << word.getPosition()[1];
+        boardFile << ' ' << orientationChar;
+        boardFile << ' ' << word.getWord() << '\n';
+    }
+    
+    boardFile << '\n';
+
+    boardFile.close();
 }

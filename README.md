@@ -16,11 +16,11 @@
   - Iteration until break
     - Render Board (DONE)
     - Ask for a word && check word exists in words (DONE)
-    - Ask position and Horz/Vert (allow to restart iteration on "R") && check position is valid
-    - Update Board.board with new letters
-    - Save word in Board.words 
-    - IF i > 5, Ask if they want to finish the Board (if "Y", break) (Partially Done)
-- Create & save board file (respecting format) (Partially Done)
+    - Ask position and Horz/Vert (allow to restart iteration on "R") && check position is valid (DONE)
+    - Update Board.board with new letters (DONE)
+    - Save word in Board.words (DONE)
+    - IF i > 5, Ask if they want to finish the Board (if "Y", break) (DONE)
+- Create & save board file (respecting format) (DONE)
 
 ### Objects
 

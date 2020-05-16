@@ -12,13 +12,13 @@ using namespace std;
 
 int main()
 {
-    // initiate vars
+    const unsigned short MIN_WORDS = 5;
+
     Board board;
     string boardName;
-    bool boardFinished;
-    set<string> acceptableWords;
-    
     vector<unsigned short> boardSize;
+    set<string> acceptableWords;
+    bool boardFinished;
 
     boardName = Requester::requestBoardName();
     board.setName(boardName);
@@ -41,19 +41,12 @@ int main()
                 cout << "Invalid word size or position, please try again.\n\n";             
         }
 
-        if(board.getWords().size() >= 5){
-            boardFinished = Requester::requestIsBoardFinished();
-            if (boardFinished)
-            {
-                break;
-            }
-        }
+        if(board.getWords().size() >= MIN_WORDS && Requester::requestIsBoardFinished())
+            break;
     }
 
-    // Save Board to File
-    string word = "aah";
-    FileWrapper::saveBoardToFile(board.getName(), word);
+    FileWrapper::saveBoardToFile(board);
+    cout << "Board saved successfully with name " << board.getName() << ".txt" << '\n';
 
-    cout << "Program Finished Successfully\n";
-    getline(cin, boardName);
+    return 0;
 }

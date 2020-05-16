@@ -4,6 +4,8 @@
 #include <string>
 #include <set>
 
+#include "Classes/Board.h"
+
 // Responsible for wrapping all file operations
 class FileWrapper {
 public:
@@ -11,7 +13,7 @@ public:
 
     std::set<std::string> static loadWordsFile();
     bool static isValidFilename(std::string filename);
-    bool static saveBoardToFile(std::string boardName,  std::string word);
+    void static saveBoardToFile(Board board);
 };
 
 #endif
