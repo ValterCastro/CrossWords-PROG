@@ -1,9 +1,5 @@
-//
-// Created by Administrator on 29/04/2020.
-//
-
-#ifndef SCRABBLEJUNIOR_SCRABBLE_JUNIOR_H
-#define SCRABBLEJUNIOR_SCRABBLE_JUNIOR_H
+#ifndef GAME_H
+#define GAME_H
 
 #include <iostream>
 #include <vector>
@@ -21,4 +17,4 @@ private:
 
 };
 
-#endif //SCRABBLEJUNIOR_SCRABBLE_JUNIOR_H
+#endif

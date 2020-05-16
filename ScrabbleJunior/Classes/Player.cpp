@@ -1,9 +1,4 @@
-//
-// Created by Administrator on 29/04/2020.
-//
-
 #include "Player.h"
-
 
 Player::Player(unsigned int id, std::vector<char> hand,  unsigned int score = 0) {
     this->id = id;

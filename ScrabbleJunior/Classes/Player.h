@@ -1,9 +1,5 @@
-//
-// Created by Administrator on 29/04/2020.
-//
-
-#ifndef SCRABBLEJUNIOR_PLAYER_H
-#define SCRABBLEJUNIOR_PLAYER_H
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #include <iostream>
 #include <vector>
@@ -11,7 +7,7 @@
 
 class Player{
 public:
-    Player(unsigned int id, std::vector<char> hand,  unsigned int score = 0);
+    Player(unsigned int id, std::vector<char> hand,  unsigned int score);
 
     unsigned int getID() const;
     unsigned int getScore() const;
@@ -27,4 +23,4 @@ private:
     std::vector<char> hand;
 };
 
-#endif //SCRABBLEJUNIOR_PLAYER_H
+#endif
