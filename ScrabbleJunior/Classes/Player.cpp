@@ -1,31 +1,25 @@
 #include "Player.h"
 
-Player::Player(unsigned int id, std::vector<char> hand,  unsigned int score = 0) {
-    this->id = id;
-    this->score = score;
-    this->hand = hand;
+#include <vector>
+
+Player::Player(unsigned short id) {
+  this->id = id;
+  this->score = 0;
 }
 
-unsigned int Player::getID() const {
-    return id;
+unsigned short Player::getID() const { return this->id; }
+
+std::vector<char> Player::getHand() const { return this->hand; }
+
+unsigned short Player::getScore() const { return this->score; }
+
+void Player::addTile(char tileChar) { this->hand.push_back(tileChar); }
+
+void Player::removeTile(char tileChar) {
+  std::vector<char>::iterator it;
+
+  it = std::find(this->hand.begin(), this->hand.end(), tileChar);
+  if (it != this->hand.end()) this->hand.erase(it);
 }
 
-std::vector<char> Player::getHand() const {
-    return hand;
-}
-
-unsigned int Player::getScore() const {
-    return score;
-}
-
-void Player::setHand(std::vector<char> hand) {
-    //to be filled
-}
-
-void Player::setID(unsigned int id) {
-    this->id = id;
-}
-
-void Player::setScore(unsigned int score) {
-    this->score = score;
-}
+void Player::setScore(unsigned short score) { this->score = score; }

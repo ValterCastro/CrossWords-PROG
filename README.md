@@ -24,9 +24,6 @@
 
 ### Objects
 
-Helper:
-- number_coordinate(letter)
-
 Classes:
   - Board (Required):
     - .name string
@@ -92,6 +89,7 @@ Classes:
 
 - Board
   - .tiles vector [line][collumn] Tile
+  - .words map[id] => [Word] 
 
 - Player
   - .id unsigned_small
@@ -99,5 +97,11 @@ Classes:
   - .hand vector char
 
 - Tile
-  - .letter char /a-Z/
+  - .letter char /A-Z/
   - .played bool
+  - .wordIds vector<unsigned short>
+
+- Word
+  - .id unsigned short
+  - .word string
+  - .nrLettersMissing unsigned short
