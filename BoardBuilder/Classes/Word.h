@@ -13,6 +13,7 @@ public:
 	std::vector<char> getPosition();
 	WordOrientation getOrientation();
 	std::string getWord();
+	std::string static stringToUpper(std::string string);
 private:
 	std::vector<char> position;
 	WordOrientation orientation;
