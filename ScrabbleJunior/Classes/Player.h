@@ -1,26 +1,25 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 
-class Player{
-public:
-    Player(unsigned int id, std::vector<char> hand,  unsigned int score);
+class Player {
+ public:
+  Player(unsigned short id);
 
-    unsigned int getID() const;
-    unsigned int getScore() const;
-    std::vector<char> getHand() const;
+  unsigned short getID() const;
+  unsigned short getScore() const;
+  std::vector<char> getHand() const;
 
-    void setID(unsigned int id);
-    void setScore(unsigned int score);
-    void setHand(std::vector<char> hand);
+  void setScore(unsigned short score);
+  void addTile(char tileChar);
+  void removeTile(char tileChar);
 
-private:
-    unsigned int id;
-    unsigned int score;
-    std::vector<char> hand;
+ private:
+  unsigned short id;
+  unsigned short score;
+  std::vector<char> hand;
 };
 
 #endif
