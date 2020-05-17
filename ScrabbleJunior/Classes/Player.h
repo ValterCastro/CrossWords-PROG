@@ -6,9 +6,10 @@
 
 class Player {
  public:
-  Player(unsigned short id);
+  Player(unsigned short id, std::string name);
 
   unsigned short getID() const;
+  std::string getName() const;
   unsigned short getScore() const;
   std::vector<char> getHand() const;
 
@@ -18,6 +19,7 @@ class Player {
 
  private:
   unsigned short id;
+  std::string name;
   unsigned short score;
   std::vector<char> hand;
 };

@@ -2,14 +2,22 @@
 
 Board::Board(){};
 
+const char Board::INITIAL_ROW_LETTER = 'A';
+const char Board::INITIAL_COLLUMN_LETTER = 'a';
+
+std::string Board::getFilename() { return this->filename; };
+
 std::vector<std::vector<Tile>> Board::getTiles() { return this->tiles; };
-std::map<unsigned short, Word> Board::getWords() { return this->words; };
+
+std::vector<Word> Board::getWords() { return this->words; };
 
 Tile Board::getTile(unsigned short rowIndex, unsigned short collumnIndex) {
   return this->tiles.at(rowIndex).at(collumnIndex);
 };
 
-Word Board::getWord(unsigned short id) { return this->words.at(id); };
+Word Board::getWord(unsigned short id) { return this->words[id - 1]; };
+
+void Board::setFilename(std::string filename) { this->filename = filename; };
 
 void Board::setTiles(std::vector<std::vector<Tile>> tiles) {
   this->tiles = tiles;
@@ -20,4 +28,4 @@ void Board::setTileAsPlayed(unsigned short rowIndex,
   this->tiles.at(rowIndex).at(collumnIndex).setPlayed(true);
 };
 
-void Board::addWord(Word word) { this->words.at(word.getId()) = word; };
+void Board::setWords(std::vector<Word> words) { this->words = words; }

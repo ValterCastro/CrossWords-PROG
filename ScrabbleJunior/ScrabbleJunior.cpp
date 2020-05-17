@@ -3,45 +3,39 @@
 #include "Classes/Board.cpp"
 #include "Classes/Game.cpp"
 #include "Classes/Player.cpp"
+#include "Classes/Pool.cpp"
 #include "Classes/Tile.cpp"
 #include "Classes/Word.cpp"
+#include "Libraries/BoardLoadService.cpp"
+#include "Libraries/FileWrapper.cpp"
+#include "Libraries/PoolLoadService.cpp"
+#include "Libraries/Requester.cpp"
 
 using namespace std;
 
 int main() {
-  std::string devComment;
-
-  cout << "Game Started";
-
+  // Initialize Vars
   Game game;
+  unsigned short nrOfPlayers;
+  std::string playerName;
+  std::string boardFilename;
 
-  game.addToPool('a');
-  game.addToPool('b');
-  game.addToPool('c');
-  game.addToPool('d');
-  game.addToPool('e');
-  game.addToPool('f');
-  game.addToPool('g');
+  // Game Setup
+  // - Setup Players
+  nrOfPlayers = Requester::requestNrOfPlayers();
+  for (size_t i = 0; i < nrOfPlayers; i++) {
+    playerName = Requester::requestPlayerName(i + 1);
+    game.addPlayer(Player::Player(i + 1, playerName));
+  }
 
-  game.shufflePool();
+  // - Setup Board
+  boardFilename = Requester::requestBoardFilename();
+  game.getBoard().setFilename(boardFilename);
+  BoardLoadService::call(game.getBoard());
+  PoolLoadService::call(game.getPool(), game.getBoard().getWords());
 
-  cout << "Finished";
+  cout << "line";
 
-  // - Game Setup:
-  //   - Ask nr of players (accept 2, 3, 4)
-  //   - Create X players
-  //   - Ask each player names
-  //     - save name
-  //
-  //   - Load available file/board names
-  //   - Ask to select which board they want to play
-  //   - Save selected file name
-  //
-  // - Board Prep:
-  //   - Create Board
-  //   - Load selected board to positions
-  //   - Load selected board to Pool (slicing each char & then shuffling)
-  //
   // - Play Game:
   //   While !game_ended:
   //     player = Game.players[Game.turn % nr_players]
@@ -66,6 +60,6 @@ int main() {
   //
   // - Calculate & Announce the winner
 
-  getline(cin, devComment);
+  getline(cin, playerName);
   return 0;
 }
