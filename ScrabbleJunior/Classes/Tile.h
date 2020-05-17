@@ -5,13 +5,15 @@
 
 class Tile {
  public:
-  Tile(char letter, std::vector<unsigned short> wordIds);
+  Tile();
 
   char getLetter();
   bool getPlayed();
   std::vector<unsigned short> getWordIds();
 
+  void setLetter(char letter);
   void setPlayed(bool played);
+  void addWordId(unsigned short wordId);
 
  private:
   char letter;

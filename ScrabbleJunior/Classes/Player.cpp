@@ -1,13 +1,14 @@
 #include "Player.h"
 
-#include <vector>
-
-Player::Player(unsigned short id) {
+Player::Player(unsigned short id, std::string name) {
   this->id = id;
+  this->name = name;
   this->score = 0;
 }
 
 unsigned short Player::getID() const { return this->id; }
+
+std::string Player::getName() const { return this->name; }
 
 std::vector<char> Player::getHand() const { return this->hand; }
 

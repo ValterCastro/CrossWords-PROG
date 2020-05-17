@@ -47,19 +47,17 @@ How to render all players tiles? Around the board, left-to-right & top-to-bottom
 - The code must be structured in order to separate the definition of each class and the implementation of its methods, in files with the extension .hpp (or .h) and .cpp, respectively.
 
 - Game Setup:
-  - Ask nr of players (accept 2, 3, 4)
-  - Create X players  
-  - Ask each player names
-    - save name
+  - Ask nr of players (accept 2, 3, 4) (DONE)
+  - Create X players (DONE)  
+  - Ask each player names & save (DONE)
   
-  - Load available file/board names
-  - Ask to select which board they want to play
-  - Save selected file name
+  - Ask which board they want to play & validate (DONE)
+  - Save selected board filename (DONE)
 
 - Board Prep:
-  - Create Board
-  - Load selected board to positions  
-  - Load selected board to Pool (slicing each char & then shuffling)
+  - Create Board (DONE)
+  - Load selected board to Tiles & Words (DONE)  
+  - Load selected board to Pool (slicing each char & then shuffling) (DONE)
 
 - Play Game:
   While !game_ended:
@@ -83,17 +81,19 @@ Classes:
 - Game
   - .board Board
   - .players vector Player
-  - .pool vector chars
-  - .turn unsigned_small
+  - .pool Pool
+  - .turn unsigned short
   - .ended bool
 
 - Board
+  - .filename string
   - .tiles vector [line][collumn] Tile
   - .words map[id] => [Word] 
 
 - Player
-  - .id unsigned_small
-  - .score unsigned_small
+  - .id unsigned short
+  - .name string
+  - .score unsigned short
   - .hand vector char
 
 - Tile
@@ -105,3 +105,8 @@ Classes:
   - .id unsigned short
   - .word string
   - .nrLettersMissing unsigned short
+
+- Pool
+  - .letters vector<char>
+
+Important Note: Google C++ code style was chosen and followed

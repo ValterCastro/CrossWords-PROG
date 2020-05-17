@@ -1,38 +1,33 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <algorithm>
-#include <chrono>
-#include <random>
 #include <vector>
 
 #include "Board.h"
 #include "Player.h"
+#include "Pool.h"
 
 class Game {
  public:
   Game();
 
   // getters
-  Board getBoard();
-  std::vector<Player> getPlayers();
-  std::vector<char> getPool();
+  Board &getBoard();
+  std::vector<Player> &getPlayers();
+  Pool &getPool();
   unsigned short getTurn();
   bool getEnded();
 
   // setters & mutators
   void setBoard(Board board);
   void addPlayer(Player player);
-  void addToPool(char tileChar);
-  void shufflePool();
-  char popCharFromPool();
   void incrementTurn();
   void setEnded(bool ended);
 
  private:
   Board board;
   std::vector<Player> players;
-  std::vector<char> pool;
+  Pool pool;
   unsigned short turn;
   bool ended;
 };
