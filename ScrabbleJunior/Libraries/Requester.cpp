@@ -35,6 +35,25 @@ std::string Requester::requestBoardFilename() {
   return boardFilename;
 }
 
+std::string Requester::requestLetterAndPosition(std::string playerName,
+                                                unsigned short nrRows,
+                                                unsigned short nrCollumns) {
+  std::string letterAndPosition;
+  std::string question;
+  char maxRowLetter;
+  char maxCollumnLetter;
+
+  maxRowLetter = Board::INITIAL_ROW_LETTER + (nrRows - 1);
+  maxCollumnLetter = Board::INITIAL_COLLUMN_LETTER + (nrCollumns - 1);
+
+  question = playerName + ", which letter and position would you like to play?";
+  letterAndPosition = Requester::getValidLetterAndPosition(
+      question, maxRowLetter, maxCollumnLetter);
+  std::cout << '\n';
+
+  return letterAndPosition;
+};
+
 // private
 
 int Requester::getValidInt(std::string question, int min, int max) {
@@ -91,6 +110,30 @@ std::string Requester::getValidBoardFilename(std::string question) {
   } while (!valid_input);
 
   return answer + ".txt";
+}
+
+std::string Requester::getValidLetterAndPosition(std::string question,
+                                                 char maxRowLetter,
+                                                 char maxCollumnLetter) {
+  bool valid_input = false;
+  std::string answer;
+
+  do {
+    std::cout << question << '\n';
+    getline(std::cin, answer);
+
+    if (answer[0] >= 'A' && answer[0] <= 'Z' && answer[1] == ' ' &&
+        answer[2] >= Board::INITIAL_ROW_LETTER && answer[2] <= maxRowLetter &&
+        answer[3] >= Board::INITIAL_COLLUMN_LETTER &&
+        answer[3] <= maxCollumnLetter) {
+      valid_input = true;
+    } else {
+      std::cout << "Invalid input, please write a valid Letter and Position. "
+                   "(eg: 'S Cd' or 'L Bc')\n\n";
+    }
+  } while (!valid_input);
+
+  return answer;
 }
 
 // OLD

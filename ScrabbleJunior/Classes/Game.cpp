@@ -10,11 +10,15 @@ Board &Game::getBoard() { return this->board; };
 
 std::vector<Player> &Game::getPlayers() { return this->players; };
 
+Player &Game::getCurrentPlayer() {
+  return this->players[((this->turn - 1) % this->players.size())];
+};
+
 Pool &Game::getPool() { return this->pool; };
 
-unsigned short Game::getTurn() { return this->turn; };
+unsigned short Game::getTurn() const { return this->turn; };
 
-bool Game::getEnded() { return this->ended; };
+bool Game::getEnded() const { return this->ended; };
 
 // setters & mutators
 void Game::setBoard(Board board) { this->board = board; };

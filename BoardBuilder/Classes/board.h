@@ -13,11 +13,11 @@ class Board {
   const char static INITIAL_COLLUMN_LETTER;
 
   // getters
-  std::string getName();
-  unsigned short getNrRows();
-  unsigned short getNrCollumns();
-  std::vector<std::vector<char>> getTiles();
-  std::vector<Word> getWords();
+  std::string getName() const;
+  unsigned short getNrRows() const;
+  unsigned short getNrCollumns() const;
+  std::vector<std::vector<char>> getTiles() const;
+  std::vector<Word> getWords() const;
 
   // setters
   void setName(std::string name);
@@ -31,11 +31,12 @@ class Board {
   std::vector<std::vector<char>> tiles;
   std::vector<Word> words;
 
-  bool wordCanBeAdded(Word word);
+  bool wordCanBeAdded(Word word) const;
   bool checkHorizontal(Word word, unsigned short rowIndex,
-                       unsigned short collumnIndex);
+                       unsigned short collumnIndex) const;
   bool checkVertical(Word word, unsigned short rowIndex,
-                     unsigned short collumnIndex);
+                     unsigned short collumnIndex) const;
+
   void addWordToTiles(Word word);
 };
 

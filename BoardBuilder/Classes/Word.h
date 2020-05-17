@@ -10,9 +10,9 @@ class Word {
  public:
   Word(char position[2], WordOrientation orientation, std::string word);
 
-  std::vector<char> getPosition();
-  WordOrientation getOrientation();
-  std::string getWord();
+  std::vector<char> getPosition() const;
+  WordOrientation getOrientation() const;
+  std::string getWord() const;
   std::string static stringToUpper(std::string string);
 
  private:

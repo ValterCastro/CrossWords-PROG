@@ -7,9 +7,9 @@ class Tile {
  public:
   Tile();
 
-  char getLetter();
-  bool getPlayed();
-  std::vector<unsigned short> getWordIds();
+  char getLetter() const;
+  bool getPlayed() const;
+  std::vector<unsigned short> getWordIds() const;
 
   void setLetter(char letter);
   void setPlayed(bool played);

@@ -16,6 +16,9 @@ class Requester {
   unsigned short static requestNrOfPlayers();
   std::string static requestPlayerName(unsigned short playerId);
   std::string static requestBoardFilename();
+  std::string static requestLetterAndPosition(std::string playerName,
+                                              unsigned short nrRows,
+                                              unsigned short nrCollumns);
 
   // OLD
   /*
@@ -23,10 +26,14 @@ class Requester {
                           unsigned short nrRows, unsigned short nrCollumns);
   bool static requestIsBoardFinished();
   */
+
  private:
   int static getValidInt(std::string question, int min, int max);
   std::string static getNonBlankString(std::string question);
   std::string static getValidBoardFilename(std::string question);
+  std::string static getValidLetterAndPosition(std::string question,
+                                               char maxRowLetter,
+                                               char maxCollumnLetter);
 
   // OLD
   /*

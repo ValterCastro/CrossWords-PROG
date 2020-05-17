@@ -8,14 +8,14 @@ class Player {
  public:
   Player(unsigned short id, std::string name);
 
-  unsigned short getID() const;
+  unsigned short getId() const;
   std::string getName() const;
   unsigned short getScore() const;
   std::vector<char> getHand() const;
 
   void setScore(unsigned short score);
-  void addTile(char tileChar);
-  void removeTile(char tileChar);
+  void addLetter(char letter);
+  void removeLetter(char letter);
 
  private:
   unsigned short id;
