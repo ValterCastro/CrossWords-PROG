@@ -5,11 +5,11 @@ Tile::Tile() {
   this->played = false;
 }
 
-char Tile::getLetter() { return this->letter; };
+char Tile::getLetter() const { return this->letter; };
 
-bool Tile::getPlayed() { return this->played; };
+bool Tile::getPlayed() const { return this->played; };
 
-std::vector<unsigned short> Tile::getWordIds() { return this->wordIds; }
+std::vector<unsigned short> Tile::getWordIds() const { return this->wordIds; }
 
 void Tile::setLetter(char letter) { this->letter = letter; };
 

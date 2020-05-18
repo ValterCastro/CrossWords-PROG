@@ -13,12 +13,16 @@ class Board {
   const char static INITIAL_ROW_LETTER;
   const char static INITIAL_COLLUMN_LETTER;
 
-  std::string getFilename();
-  std::vector<std::vector<Tile>> getTiles();
-  std::vector<Word> getWords();
+  std::string getFilename() const;
+  std::vector<std::vector<Tile>> getTiles() const;
+  unsigned short getNrRows() const;
+  unsigned short getNrCollumns() const;
+  std::vector<Word> getWords() const;
 
-  Tile getTile(unsigned short rowIndex, unsigned short collumnIndex);
-  Word getWord(unsigned short id);
+  Tile getTile(unsigned short rowIndex, unsigned short collumnIndex) const;
+  Word getWord(unsigned short id) const;
+  bool isMoveValid(std::string moveString, std::vector<char> playerHand,
+                   unsigned short blockedWordId) const;
 
   void setFilename(std::string filename);
   void setTiles(std::vector<std::vector<Tile>> tiles);

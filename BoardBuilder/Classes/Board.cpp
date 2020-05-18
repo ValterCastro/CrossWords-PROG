@@ -6,15 +6,15 @@ const char Board::INITIAL_COLLUMN_LETTER = 'a';
 
 // getters
 
-std::string Board::getName() { return this->name; }
+std::string Board::getName() const { return this->name; }
 
-unsigned short Board::getNrRows() { return this->tiles.size(); }
+unsigned short Board::getNrRows() const { return this->tiles.size(); }
 
-unsigned short Board::getNrCollumns() { return this->tiles[0].size(); }
+unsigned short Board::getNrCollumns() const { return this->tiles[0].size(); }
 
-std::vector<std::vector<char>> Board::getTiles() { return this->tiles; }
+std::vector<std::vector<char>> Board::getTiles() const { return this->tiles; }
 
-std::vector<Word> Board::getWords() { return this->words; }
+std::vector<Word> Board::getWords() const { return this->words; }
 
 // setters
 
@@ -48,7 +48,7 @@ bool Board::addWord(Word word) {
 
 // private
 
-bool Board::wordCanBeAdded(Word word) {
+bool Board::wordCanBeAdded(Word word) const {
   std::vector<char> position;
   WordOrientation orientation;
   unsigned short rowIndex;
@@ -67,7 +67,7 @@ bool Board::wordCanBeAdded(Word word) {
 }
 
 bool Board::checkHorizontal(Word word, unsigned short rowIndex,
-                            unsigned short collumnIndex) {
+                            unsigned short collumnIndex) const {
   char tile;
 
   for (size_t i = 0; i < word.getWord().size(); i++) {
@@ -82,7 +82,7 @@ bool Board::checkHorizontal(Word word, unsigned short rowIndex,
 }
 
 bool Board::checkVertical(Word word, unsigned short rowIndex,
-                          unsigned short collumnIndex) {
+                          unsigned short collumnIndex) const {
   char tile;
 
   for (size_t i = 0; i < word.getWord().size(); i++) {

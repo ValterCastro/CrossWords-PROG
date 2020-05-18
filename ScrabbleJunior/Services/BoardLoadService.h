@@ -8,7 +8,7 @@
 #include "../Classes/Board.h"
 #include "../Classes/Tile.h"
 #include "../Classes/Word.h"
-#include "FileWrapper.h"
+#include "../Libraries/FileWrapper.h"
 
 // Responsible for loading a file and setting board's tiles and words
 class BoardLoadService {

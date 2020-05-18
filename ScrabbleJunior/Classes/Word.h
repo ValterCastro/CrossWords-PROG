@@ -5,18 +5,19 @@
 
 class Word {
  public:
-  Word(unsigned short id, std::string word, unsigned short nrLettersMissing);
+  Word(unsigned short id, std::string word);
 
-  unsigned short getId();
-  std::string getWord();
-  unsigned short getNrLettersMissing();
+  unsigned short getId() const;
+  std::string getWord() const;
+  std::vector<char> getAvailableLetters() const;
+  char getFirstAvailableLetter() const;
 
-  void decrementNrLettersMissing();
+  void removeAvailableLetter(char letter);
 
  private:
   unsigned short id;
   std::string word;
-  unsigned short nrLettersMissing;
+  std::vector<char> availableLetters;
 };
 
 #endif

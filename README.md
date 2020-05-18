@@ -60,12 +60,13 @@ How to render all players tiles? Around the board, left-to-right & top-to-bottom
   - Load selected board to Pool (slicing each char & then shuffling) (DONE)
 
 - Play Game:
-  While !game_ended:
-    player = Game.players[Game.turn % nr_players]
+  - While !game_ended:
+    - player = Game.players[Game.turn % nr_players]
+    - Player fetch letters from pool until 7 in hand
+    - IF player.letters > 1 
     - Render selected board, each player tiles & score, and an * on the current active player
-    - While not_valid, 
+    - While not_valid,
       - Ask which letter & position wants to play (example: A Cb) & validate format
-      - IF player.letters > 1, Ask which letter & position wants to play (example: A Cb) & validate format
       - Validate moves: (letters_are_in_players_hand? && matches_available_letters && (lowest_possible_index? || (first_turn? && first_and_second_of_same_word?))
     - Calculate points_won and add to player's score
     - Remove used letters from player hand
@@ -104,7 +105,7 @@ Classes:
 - Word
   - .id unsigned short
   - .word string
-  - .nrLettersMissing unsigned short
+  - .availableLetters vector<char>
 
 - Pool
   - .letters vector<char>

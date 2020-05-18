@@ -1,16 +1,29 @@
 #include "Word.h"
 
-Word::Word(unsigned short id, std::string word,
-           unsigned short nrLettersMissing) {
+Word::Word(unsigned short id, std::string word) {
   this->id = id;
   this->word = word;
-  this->nrLettersMissing = nrLettersMissing;
+  for (size_t i = 0; i < word.size(); i++) {
+    this->availableLetters.push_back(word[i]);
+  }
 };
 
-unsigned short Word::getId() { return this->id; };
+unsigned short Word::getId() const { return this->id; };
 
-std::string Word::getWord() { return this->word; };
+std::string Word::getWord() const { return this->word; };
 
-unsigned short Word::getNrLettersMissing() { return this->nrLettersMissing; };
+std::vector<char> Word::getAvailableLetters() const {
+  return this->availableLetters;
+};
 
-void Word::decrementNrLettersMissing() { this->nrLettersMissing--; };
+char Word::getFirstAvailableLetter() const {
+  return this->availableLetters.front();
+};
+
+void Word::removeAvailableLetter(char letter) {
+  std::vector<char>::iterator it;
+
+  it = std::find(this->availableLetters.begin(), this->availableLetters.end(),
+                 letter);
+  if (it != this->availableLetters.end()) this->availableLetters.erase(it);
+};

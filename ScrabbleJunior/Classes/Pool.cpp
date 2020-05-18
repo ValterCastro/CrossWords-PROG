@@ -2,6 +2,16 @@
 
 Pool::Pool(){};
 
+char Pool::getLastLetter() const {
+  char letter;
+  if (this->letters.size() != 0)
+    letter = this->letters.back();
+  else
+    letter = '\0';
+
+  return letter;
+}
+
 void Pool::addToPool(char tileChar) { this->letters.push_back(tileChar); };
 
 void Pool::shufflePool() {
@@ -11,10 +21,4 @@ void Pool::shufflePool() {
                std::default_random_engine(seed));
 };
 
-char Pool::popCharFromPool() {
-  char lastChar = this->letters.back();
-
-  this->letters.pop_back();
-
-  return lastChar;
-};
+void Pool::popLastLetter() { this->letters.pop_back(); };

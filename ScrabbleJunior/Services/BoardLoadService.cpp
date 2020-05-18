@@ -81,5 +81,5 @@ void BoardLoadService::addParsedWord(std::vector<std::string> parsedWord,
     }
   }
 
-  words.push_back(Word::Word(wordId, parsedWord[2], parsedWord[2].size()));
+  words.push_back(Word::Word(wordId, parsedWord[2]));
 }

@@ -14,9 +14,10 @@ class Game {
   // getters
   Board &getBoard();
   std::vector<Player> &getPlayers();
+  Player &getCurrentPlayer();
   Pool &getPool();
-  unsigned short getTurn();
-  bool getEnded();
+  unsigned short getTurn() const;
+  bool getEnded() const;
 
   // setters & mutators
   void setBoard(Board board);

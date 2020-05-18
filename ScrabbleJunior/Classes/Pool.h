@@ -10,9 +10,11 @@ class Pool {
  public:
   Pool();
 
+  char getLastLetter() const;
+
   void addToPool(char tileChar);
   void shufflePool();
-  char popCharFromPool();
+  void popLastLetter();
 
  private:
   std::vector<char> letters;
